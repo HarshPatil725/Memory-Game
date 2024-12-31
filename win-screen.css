@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#nav-bar {
+    background-color: #01EB01;
+    height: 86px;
+}
+
+#main-win {
+    background-image: url('/assets/Background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 86px);
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    margin: 0;
+    background-color: #126A56;
+    /* padding: 15px; */
+    max-width: 450px;
+    height:100% ;
+    width: 100% ;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    margin-top: 20px;
+}
+
+.hero-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 40px;
+}
+
+.hero-subtitle{
+    font-family: "Poppins", serif;
+    font-weight: 300;
+    font-size: 24px;
+}
+
+.hero-description {
+    margin-top: 10px;
+    margin-bottom: 120px;
+    text-align: center;
+}
+
+.cta{
+    width: 240px;
+    height: 70px;
+    border-radius: 12px;
+    border: 3px solid red;
+    box-shadow: 4px 4px 10px #868686 ;
+    background: linear-gradient(150deg, #EDED00, #FFA500);
+    font-family: 'Baloo 2', cursive;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+} 
+.cta:hover{
+    background: linear-gradient(150deg, #FFFF03, #FFBE48) ;
+    box-shadow : none ;
+}

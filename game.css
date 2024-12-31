@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Itim&family=Karla:ital,wght@0,200..800;1,200..800&family=Londrina+Sketch&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#nav-bar {
+    background-color: #01EB01;
+}
+
+/* For desktop view */
+@media (min-width: 992px) {
+    .navbar-nav.mx-auto {
+        position: relative;
+        right: 40px;
+    }
+}
+
+/* For mobile/tablet view */
+@media (max-width: 991px) {
+    .navbar-nav.mx-auto {
+        position: static;
+    }
+}
+
+
+.signin-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 35px;
+    background-color: #FFA500;
+    border-radius: 15px;
+    margin-right: 40px;
+    text-decoration: none;
+    color: black;
+}
+
+.signin-btn:hover {
+    border: 3px solid black;
+}
+
+#main-game {
+    background-color: #19A988;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+#game-blocks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+}
+
+.game-board {
+    width: 30%; 
+    background-color: #126A56;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    width: 48%; 
+    background-color: #126A56;
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* .game-container{
+    margin: 0;
+    background-color: #126A56;
+    padding: 15px;
+    height:100% ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.game-header {
+    color: #fff;
+    font-size: 3vw;
+    margin: 0;
+    font-family: 'Salsa', cursive;
+}
+
+.game-container h1 {
+    margin-top: 30px;
+}
+
+.game-grid{
+    display: grid;
+    grid-template-columns: repeat(4,6vw);
+    grid-template-rows: repeat(4,13vh);
+    padding: 25px;
+    gap: 10px;
+}
+
+.card{
+    background-color: #229b7f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw;
+    content: '⬆️';
+    transition: 0.5s;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.game-btn{
+    background-color: #fff;
+    color: #264c3d;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-weight: 700;
+    font-size: 1.2vw;
+    padding: 1vw;
+    cursor: pointer;
+    font-family: 'Salsa', cursive;
+}
+
+.game-btn:hover{
+    background-color: #ffffffd2;
+}
+
+.game-para {
+    font-family: "Poppins", serif;
+    font-size: 20px ;
+    text-align: center;
+    color: white;
+    margin-top: 15px;
+}
+
+.game-para p {
+    margin-bottom: 3px;
+}
+
+#time {
+    color: white;
+    font-size: 36px;
+    margin-top: 20px ;
+    margin-bottom: 60px ;
+}
