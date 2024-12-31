@@ -9,6 +9,7 @@ let matchedCards = 0; // Track the number of matched pairs
 
 const parameters = document.getElementById("parameters")
 let score = 800
+let timeDisplay = document.getElementById("time");
 
 if (isThereUser) {
     parameters.innerHTML = ""
@@ -77,7 +78,9 @@ const createCards = () => {
                     if (matchedCards === 8) {
                         setTimeout(() => {
                             alert("You win!");
-                            resetTimer(); // Stop the timer when the game is won
+                            pauseTimer(); // Stop the timer when the game is won
+                            recordGameData(score,timeDisplay.textContent)
+                            window.location = "WinScreen.html"
                         }, 500);
                     }
                 }
@@ -122,8 +125,6 @@ let timer;
 let seconds = 0;
 let isRunning = false;
 
-const timeDisplay = document.getElementById("time");
-
 const startTimer = () => {
     timer = setInterval(() => {
         seconds++;
@@ -146,4 +147,21 @@ const timerRun = () => {
         startTimer(); // Start the timer
     }
     isRunning = !isRunning; // Toggle the running state
+};
+
+function pauseTimer() {
+    clearInterval(timer);
+    console.log("Timer paused");
+}
+
+const recordGameData = (score, time) => {
+    // Create a game object where the score and time are stored in an array
+    const gameData = {
+        gameId: currentUser.games.length + 1,  // Incremental ID for each game
+        gameStats: [score,time]  // Store time and score in an array
+    };
+
+    // Push the game data object to the games array
+    currentUser.games.push(gameData);
+    saveToLocalStorage()
 };

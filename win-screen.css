@@ -52,9 +52,27 @@ body {
 }
 
 .hero-description {
-    margin-top: 10px;
+    margin-top: 50px;
+    margin-right: 30px;
     margin-bottom: 120px;
     text-align: center;
+    font-size: 24px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+#change-data {
+    text-align: center;
+}
+
+#shevron {
+    margin-right: 5px;
 }
 
 .cta{

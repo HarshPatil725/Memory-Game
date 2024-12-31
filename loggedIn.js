@@ -21,8 +21,6 @@ const signInBtn = document.getElementById("signin-btn")
 const signInBtnText = document.getElementById("signinbtn-text")
 
 if (isThereUser) {
-    console.log("yooo")
-    console.log(signInBtn.href)
     signInBtn.setAttribute("href", "User.html")
     signInBtnText.innerText = `${currentUser.userName}`
     console.log(signInBtn.href)

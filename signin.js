@@ -71,7 +71,8 @@ signupform.addEventListener("submit", function (e) {
             loggedIn : false ,
             coins : 100 ,
             highScore : 0 ,
-            bestTime : 0
+            bestTime : 0 ,
+            games : []
         };
         users.push(newUser)
         saveToLocalStorage();
