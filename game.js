@@ -62,6 +62,16 @@ const createCards = () => {
             if (lastClickedDiv !== null) {
                 if (lastClickedDiv.innerText !== div.innerText) {
 
+                    // Check if score reaches 0
+                    if (score <= 0) {
+                        setTimeout(() => {
+                            alert("You lose!");
+                            pauseTimer();
+                            window.location = "LoseScreen.html"; // Redirect to the lose screen
+                        }, 500);
+                        return; 
+                    }
+
                     score -= 50;
                     updateScore()
                     const clickedDiv = lastClickedDiv;
@@ -79,7 +89,7 @@ const createCards = () => {
                         setTimeout(() => {
                             alert("You win!");
                             pauseTimer(); // Stop the timer when the game is won
-                            recordGameData(score,timeDisplay.textContent)
+                            recordGameData(score, timeDisplay.textContent)
                             window.location = "WinScreen.html"
                         }, 500);
                     }
@@ -99,25 +109,28 @@ reset.addEventListener("click", () => {
         cover(card);
     });
     score = 800;
-    matchedCards = 0; // Reset matched cards when game is reset
+    matchedCards = 0;
 });
+
 
 start.addEventListener("click", () => {
     if (!cardCreated) {
         createCards();
         cardCreated = true;
         start.innerHTML = "Restart";
-        timerRun();
     } else {
-        timerRun();
         shuffleEmojis();
         const cards = Array.from(grid.querySelectorAll(".card"));
         cards.forEach((card) => {
             cover(card);
         });
-        matchedCards = 0; // Reset matched cards for restart
+        matchedCards = 0;
+        score = 800;
+        updateScore();
     }
+    timerRun();
 });
+
 
 // Timer
 
@@ -141,12 +154,11 @@ const resetTimer = () => {
 };
 
 const timerRun = () => {
-    if (isRunning) {
-        resetTimer(); // Reset the timer
-    } else {
-        startTimer(); // Start the timer
-    }
-    isRunning = !isRunning; // Toggle the running state
+    clearInterval(timer);
+    seconds = 0;
+    timeDisplay.textContent = "00:00";
+    startTimer();
+    isRunning = true;
 };
 
 function pauseTimer() {
@@ -155,13 +167,34 @@ function pauseTimer() {
 }
 
 const recordGameData = (score, time) => {
-    // Create a game object where the score and time are stored in an array
+
     const gameData = {
-        gameId: currentUser.games.length + 1,  // Incremental ID for each game
-        gameStats: [score,time]  // Store time and score in an array
+        gameId: currentUser.games.length + 1,
+        gameStats: [score, time]  // Store time and score in an array
     };
 
-    // Push the game data object to the games array
+    // Update High Score
+    if (score > currentUser.highScore) {
+        currentUser.highScore = score;
+    }
+
+    // Update Best Time
+    const [currentMinutes, currentSeconds] = time.split(":").map(Number);
+    const currentTotalSeconds = currentMinutes * 60 + currentSeconds;
+
+    if (!currentUser.bestTime) {
+        currentUser.bestTime = time;
+    } else {
+        const [bestMinutes, bestSeconds] = currentUser.bestTime.split(":").map(Number);
+        const bestTotalSeconds = bestMinutes * 60 + bestSeconds;
+
+        if (currentTotalSeconds < bestTotalSeconds) {
+            currentUser.bestTime = time;
+        }
+    }
+
     currentUser.games.push(gameData);
+    currentUser.coins += 100;
+
     saveToLocalStorage()
 };

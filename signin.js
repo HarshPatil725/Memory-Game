@@ -15,7 +15,7 @@ signinform.addEventListener("submit", function (e) {
 
     const email = document.getElementById("signin-email").value
     const password = document.getElementById("signin-password").value
-    const signinbtn = document.getElementById("signin-btn")
+    const signinbtn = document.getElementById("signinsubmit-btn")
 
     if (!email || !password) {
         alert("Enter all Credentials !!!")
@@ -25,8 +25,8 @@ signinform.addEventListener("submit", function (e) {
 
         if (user) {
             alert(`Welcome back ${user.userName}`)
-            const signinbtntext = document.querySelector(".signin-text")
-            signinbtntext.innerText = user.name
+            // const signinbtntext = document.getElementById("signinbtn")
+            // signinbtntext.innerText = `${user.userName}`
 
             user.loggedIn = true;
             saveToLocalStorage()
