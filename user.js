@@ -12,7 +12,7 @@ content.innerHTML = `
     <h2 class="user-header">${currentUser.userName}</h2>
     <p>Email : ${currentUser.email} </p>
     <p>Coins : ${currentUser.coins} </p>
-    <p>High Score : 0</p>
+    <p>High Score : ${currentUser.highScore} </p>
 `
 
 logOutBtn.addEventListener("click", logOut = () => {
